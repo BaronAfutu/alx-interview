@@ -9,11 +9,18 @@ def rotate_2d_matrix(matrix):
     Args:
         matrix (list[[list]]): a matrix
     """
-    n = len(matrix)    
+    n = len(matrix)
     for i in range(n // 2):
-        for j in range(i,(n - 1 - i)):
-            temp = matrix[i][j]
-            matrix[i][j] = matrix[n-1-j][i]
-            matrix[n-1-j][i] = matrix[n-1-i][n-1-j]
-            matrix[n-1-i][n-1-j] = matrix[j][n-1-i]
-            matrix[j][n-1-i] = temp
+        y = (n - i - 1)
+        for j in range(i, y):
+            x = (n - 1 - j)
+            # current number
+            tmp = matrix[i][j]
+            # change top for left
+            matrix[i][j] = matrix[x][i]
+            # change left for bottom
+            matrix[x][i] = matrix[y][x]
+            # change bottom for right
+            matrix[y][x] = matrix[j][y]
+            # change right for top
+            matrix[j][y] = tmp
