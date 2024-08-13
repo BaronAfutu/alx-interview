@@ -9,13 +9,9 @@ def rotate_2d_matrix(matrix):
     Args:
         matrix (list[[list]]): a matrix
     """
-    n = len(matrix)
-    rowsCoverage = (len(matrix)+1)//2
-    
-    for i in range(rowsCoverage):
-        colsCoverage = len(matrix[i])//2
-        
-        for j in range(colsCoverage):
+    n = len(matrix)    
+    for i in range(n // 2):
+        for j in range(i,(n - 1 - i)):
             temp = matrix[i][j]
             matrix[i][j] = matrix[n-1-j][i]
             matrix[n-1-j][i] = matrix[n-1-i][n-1-j]
